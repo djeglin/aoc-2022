@@ -19,24 +19,16 @@ class RockPaperScissors:
 			'Y': 2,
 			'Z': 3
 		}
-		winning_combos = ['CX', 'AY', 'BZ']
-		drawing_combos = ['AX', 'BY', 'CZ']
 		move = ''.join(round)
-		move_score = move_map.get(round[1])
 		result_score = 0
-		if move in winning_combos:
+		if move in ['CX', 'AY', 'BZ']:
 			result_score = 6
-		elif move in drawing_combos:
+		elif move in ['AX', 'BY', 'CZ']:
 			result_score = 3
-		return move_score + result_score
+		return move_map.get(round[1]) + result_score
 	
 	@classmethod
 	def calculate_complex_round_score(self, round):
-		shape_map = {
-			'A': 1,
-			'B': 2,
-			'C': 3
-		}
 		result_map = {
 			'X': 0,
 			'Y': 3,
@@ -44,22 +36,22 @@ class RockPaperScissors:
 		}
 		response_map = {
 			'A': {
-				'X': 'C',
-				'Y': 'A',
-				'Z': 'B'
+				'X': 3,
+				'Y': 1,
+				'Z': 2
 			},
 			'B': {
-				'X': 'A',
-				'Y': 'B',
-				'Z': 'C'
+				'X': 1,
+				'Y': 2,
+				'Z': 3
 			},
 			'C': {
-				'X': 'B',
-				'Y': 'C',
-				'Z': 'A'
+				'X': 2,
+				'Y': 3,
+				'Z': 1
 			}
 		}
-		return result_map.get(round[1]) + shape_map.get(response_map.get(round[0]).get(round[1]))
+		return result_map.get(round[1]) + response_map.get(round[0]).get(round[1])
 
 	@property
 	def p1(self):
