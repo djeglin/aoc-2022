@@ -69,4 +69,5 @@ def main():
 
 if __name__ == '__main__':
     import timeit
-    print(timeit.timeit(main, number=1))
+    print('Executed in', timeit.timeit(main, number=1), 'seconds')
+		
