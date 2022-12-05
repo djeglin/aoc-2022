@@ -47,10 +47,10 @@ class Rucksack_rearrangement:
 
 
 def main():
-		rr = Rucksack_rearrangement.read_file()
-		print('Missorted item priority:', rr.missorted_item_priority)
-		print('Elf group priority:', rr.elf_group_priority)
+	rr = Rucksack_rearrangement.read_file()
+	print('Missorted item priority:', rr.missorted_item_priority)
+	print('Elf group priority:', rr.elf_group_priority)
 
 if __name__ == '__main__':
-    import timeit
-    print(timeit.timeit(main, number=1))
+	import timeit
+	print(timeit.timeit(main, number=1))
