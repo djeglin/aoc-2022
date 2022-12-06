@@ -12,7 +12,7 @@ class Handheld:
 		with open(filename) as f:
 			return cls(f.read())
 
-	def get_index_with_reqs(self, unique_chars):
+	def get_index_with_reqs(self, unique_chars:int):
 		idx = -1
 		i = 0
 		while idx < 0:
