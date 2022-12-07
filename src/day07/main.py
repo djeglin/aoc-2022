@@ -41,14 +41,13 @@ class Space_finder:
 		o = self.terminal_output
 		folder_size = 0
 		while i < len(o):
-			if "folder" in o[i]:
-				if o[i]["folder"] == "..":
-					self.terminal_output[start_index]["size"] = folder_size
-					return folder_size, i + 1
-				else:
-					tmp_folder_size, next_index = self.get_folder_sizes(i)
-					folder_size += tmp_folder_size
-					i = next_index
+			if "folder" in o[i] and o[i]["folder"] == "..":
+				self.terminal_output[start_index]["size"] = folder_size
+				return folder_size, i + 1
+			elif "folder" in o[i]:
+				tmp_folder_size, next_index = self.get_folder_sizes(i)
+				folder_size += tmp_folder_size
+				i = next_index
 			elif o[i]["type"] == "file":
 				folder_size += o[i]["size"]
 				i += 1
@@ -69,7 +68,6 @@ class Space_finder:
 
 	@property
 	def folders_under_100k(self):
-		folders = self.folder_sizes
 		return [f for f in self.folder_sizes if f[1] < 100000]
 
 	@property
