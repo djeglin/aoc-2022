@@ -42,26 +42,16 @@ class Ropey_Rope:
 		diff_x = head[1] - tail[1]
 		if -1 <= diff_y <= 1 and -1 <= diff_x <= 1:
 			return tail
-		# diagonal motion
-		if diff_y >= 1 and diff_x >= 1:
-			return [tail[0] + 1, tail[1] + 1]
-		elif diff_y >= 1 and diff_x <= -1:
-			return [tail[0] + 1, tail[1] - 1]
-		elif diff_y <= -1 and diff_x >= 1:
-			return [tail[0] - 1, tail[1] + 1]
-		elif diff_y <= -1 and diff_x <= -1:
-			return [tail[0] - 1, tail[1] - 1]
-		# vertical motion
-		elif diff_y > 1 and diff_x == 0:
-			return [tail[0] + 1, tail[1]]
-		elif diff_y < -1 and diff_x == 0:
-			return [tail[0] - 1, tail[1]]
-		# horizontal motion
-		elif diff_y == 0 and diff_x > 1:
-			return [tail[0], tail[1] + 1]
-		elif diff_y == 0 and diff_x < -1:
-			return [tail[0], tail[1] - 1]
-		
+		if diff_y >= 1:
+			tail[0] += 1
+		elif diff_y <= -1:
+			tail[0] -= 1
+		if diff_x >= 1:
+			tail[1] += 1
+		elif diff_x <= -1:
+			tail[1] -= 1
+		return tail
+
 	
 	@property
 	def visited_tail_positions(self):
