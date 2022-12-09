@@ -8,7 +8,6 @@ class Ropey_Rope:
 		self.tail_locations = {'0,0'}
 		self.knots = []
 
-	
 	@classmethod
 	def read_file(cls):
 		absolute_path = os.path.dirname(os.path.abspath(__file__))
@@ -33,7 +32,6 @@ class Ropey_Rope:
 			
 			for k in range(1, len(self.knots)):
 				self.knots[k] = self.move_tail(self.knots[k - 1], self.knots[k])
-				
 				if k == len(self.knots) - 1:
 					self.tail_locations.add(",".join([str(i) for i in self.knots[-1]]))
 
@@ -52,11 +50,10 @@ class Ropey_Rope:
 			tail[1] -= 1
 		return tail
 
-	
 	@property
 	def visited_tail_positions(self):
 		return len(self.tail_locations)
-	
+
 
 def main():
 	p1 = Ropey_Rope.read_file()
@@ -69,7 +66,7 @@ def main():
 	for m in p2.movements:
 		p2.move(m)
 	print('Tail positions with 10 knots:', p2.visited_tail_positions)
-	
+
 
 if __name__ == '__main__':
 	import timeit
